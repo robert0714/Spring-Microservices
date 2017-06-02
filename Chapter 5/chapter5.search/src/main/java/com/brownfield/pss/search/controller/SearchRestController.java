@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brownfield.pss.search.component.SearchComponent;
@@ -54,6 +55,18 @@ class SearchRestController {
 		gaugeService.submit("tpm", tpm.count.intValue()); 
 		
 		return searchComponent.search(query);
+	}
+	
+	@RequestMapping(value="/get2", method = RequestMethod.POST)
+	List<Flight> search(@RequestParam(name="origin") String origin,
+			@RequestParam(name="destination") 	String destination,
+			@RequestParam(name="flightDate") String flightDate){
+		final SearchQuery query = new SearchQuery();
+		query.setOrigin(origin);
+		query.setDestination(destination);
+		query.setFlightDate(flightDate);
+		
+		return  this.search(query);
 	}
 }
 
