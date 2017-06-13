@@ -7,22 +7,14 @@
 	<artifactId>website</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-
 	<name>chapter9.website</name>
 	<description>Demo project for Spring Boot</description>
-
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.brownfield</groupId>
+		<artifactId>pss-parent-9</artifactId>
+		<version>1.0</version>
+		<!-- <relativePath /> lookup parent from repository -->
 	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -32,49 +24,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
- 		<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-parent</artifactId>
-				<version>Brixton.M4</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency> 
-		</dependencies>
-	</dependencyManagement>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -93,7 +54,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
- 
+
+
 </project>
 

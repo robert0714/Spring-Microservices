@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.commons.util.InetUtils;
+import org.springframework.cloud.commons.util.InetUtilsProperties;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.context.annotation.Bean;
@@ -64,7 +66,9 @@ class EurekaConfig {
 	
     @Bean
     public EurekaInstanceConfigBean eurekaInstanceConfigBean() {
-    	EurekaInstanceConfigBean config = new EurekaInstanceConfigBean();
+    	 
+		final EurekaInstanceConfigBean config = 
+				new EurekaInstanceConfigBean (new InetUtils(new InetUtilsProperties()));
     	try { 
 	   		logger.info("Ereka Pre Configuring-3");
 		   AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
