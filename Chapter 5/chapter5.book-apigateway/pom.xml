@@ -5,8 +5,7 @@
 	<parent>
 		<groupId>com.brownfield</groupId>
 		<artifactId>pss-parent</artifactId>
-		<version>1.0</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>1.0</version> 
 	</parent>	
 	<groupId>com.brownfield.pss</groupId>
 	<artifactId>book-apigateway</artifactId>
