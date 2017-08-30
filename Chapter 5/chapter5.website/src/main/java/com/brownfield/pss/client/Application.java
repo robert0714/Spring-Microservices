@@ -39,12 +39,15 @@ public class Application implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 		// Search for a flight
+		logger.info("Search for a flight");
+		
 		SearchQuery searchQuery = new SearchQuery("NYC", "SFO", "22-JAN-16");
 //		 Flight[] flights = searchClient.postForObject("http://search-service/search/get", searchQuery, Flight[].class);
 		Flight[] flights = searchClient.postForObject("http://search-apigateway/api/search/get", searchQuery,Flight[].class);
 
 		Arrays.asList(flights).forEach(flight -> logger.info(" flight >" + flight));
 
+		logger.info("create a booking only if there are flights.");
 		// create a booking only if there are flights.
 		if (flights == null || flights.length == 0) {
 			return;
@@ -65,6 +68,7 @@ public class Application implements CommandLineRunner {
 		}
 
 		// check in passenger
+		logger.info("check in passenger.");
 		if (bookingId == 0)
 			return;
 		try {
