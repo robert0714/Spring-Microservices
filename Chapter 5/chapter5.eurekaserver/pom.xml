@@ -17,7 +17,7 @@
 	<properties>
 		<start-class>com.brownfield.pss.eurekaserver.EurekaserverApplication</start-class>
 		<docker.registry.name>localhost:5000/</docker.registry.name>
-		<docker.repository.name>${docker.registry.name}sourabhh/${project.artifactId}</docker.repository.name>
+		<docker.repository.name>${docker.registry.name}robert0714/${project.artifactId}</docker.repository.name>
 		<docker.host.address>192.168.99.100</docker.host.address>
 		<docker.port>8761</docker.port>
 	</properties>
@@ -48,28 +48,30 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jolokia</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.13.9</version>
+				<groupId>io.fabric8</groupId>
+			    <artifactId>docker-maven-plugin</artifactId>
+			    <version>0.23.0</version>
 				<configuration>
-					<sourceDirectory>../docker</sourceDirectory>
 					<images>
 						<image>
 							<name>${docker.repository.name}:${project.version}</name>
 							<alias>${project.artifactId}</alias>
 							<build>
-								<from>java:8-jre</from>
+								<from>robert0714/oracle-java-8:8u151</from>
 								<maintainer>robert0714</maintainer>
 								<assembly>
 									<descriptor>docker-assembly.xml</descriptor>
 								</assembly>
 								<ports>
 									<port>${docker.port}</port>
-								</ports>
+								</ports>								
 								<cmd>
-									<shell>java -Dspring.profiles.active="docker" -jar \
-										/maven/${project.build.finalName}.jar server \
-										/maven/docker-config.yml</shell>
+									<exec>
+										<arg>java</arg>
+										<arg>-jar</arg>
+										<arg>/maven/${project.build.finalName}.jar</arg>
+										<arg>--java.security.egd=file:/dev/./urandom </arg>
+									</exec>
 								</cmd>
 							</build>
 							<run>
